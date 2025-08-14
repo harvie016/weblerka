@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея Лерочки 🎉</title>
+    <link rel="stylesheet" href="/static/css/tailwind.css">
+    <style>
+        .gallery { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 30px;}
+        .photo-card { background: #fff; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); padding: 16px; max-width: 320px; display: flex; flex-direction: column; align-items: center;}
+        .gallery img { max-width: 280px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .quote { margin-top: 12px; font-style: italic; color: #a855f7; text-align: center;}
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="text-3xl font-bold text-pink-600 mt-8 mb-4">📸 Галерея Лерочки</h1>
+        <a href="/" class="inline-block px-6 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-full shadow transition duration-200">На главную</a>
+    </header>
+    <div class="gallery">
+        {{if .Photos}}
+            {{range .Photos}}
+                <div class="photo-card">
+                    <img src="/static/img/all/{{.Image}}" alt="Фото">
+                    <div class="quote">«{{.Quote}}»</div>
+                </div>
+            {{end}}
+        {{else}}
+            <p class="text-gray-500 text-lg">Пока нет фотографий.</p>
+        {{end}}
+    </div>
+</body>
+</html>

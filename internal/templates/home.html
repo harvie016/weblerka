@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>День Рождения Лерочки 🎉</title>
+<link rel="stylesheet" href="/static/css/tailwind.css">
+<style>
+@keyframes fall { to { transform: translateY(100vh); opacity: 0.2; } }
+.confetti {
+    position: fixed;
+    top: -20px;
+    border-radius: 50%;
+    opacity: 0.7;
+    z-index: 9999;
+    animation-name: fall;
+}
+</style>
+</head>
+<body class="bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 min-h-screen">
+
+<header class="text-center py-8">
+    <h1 class="text-3xl md:text-4xl font-bold text-pink-600 mb-2">🎉 Всем привет! Я Лерочка 🎉</h1>
+    <p class="text-lg text-gray-700 mb-2">У меня сегодня день рождения! Спасибо всем, кто со мной — я вас очень люблю! 💖</p>
+    <div class="text-4xl animate-bounce">😊</div>
+</header>
+
+<main class="flex flex-col items-center px-2">
+    <section class="photos w-full flex flex-col items-center">
+        <h2 class="text-2xl font-semibold mb-4">📸 Тупо я 😉</h2>
+        <div class="flex justify-center">
+            <div class="rounded-2xl border-4 border-pink-300 shadow-lg overflow-hidden bg-white p-2 transition-transform duration-200 hover:scale-105">
+                <img src="/static/img/all/main.jpg" alt="Лерочка" class="w-48 h-48 object-cover rounded-xl" style="min-width: 160px; min-height: 160px;">
+            </div>
+        </div>
+        <div class="mt-8">
+            <a href="/gallery" class="btn-fancy">Перейти в галерею</a>
+        </div>
+        <div class="mt-4">
+            <a href="/index" class="btn-fancy">Наши моменты</a>
+        </div>
+    </section>
+
+</main>
+
+<footer class="text-center text-gray-500 mt-12 mb-4">
+    © 2025 Филипп — Для Лерочки с любовью 💖
+</footer>
+
+<script>
+    // Генерация конфетти
+    function createConfetti() {
+        const colors = ['#ff4f9d', '#ffd700', '#00bfff', '#adff2f', '#ff69b4'];
+        for (let i = 0; i < 30; i++) {
+            let conf = document.createElement('div');
+            conf.className = 'confetti';
+            conf.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
+            conf.style.left = Math.random() * 100 + 'vw';
+            conf.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            conf.style.width = conf.style.height = (Math.random() * 8 + 4) + 'px';
+            document.body.appendChild(conf);
+
+            setTimeout(() => { conf.remove(); }, 5000);
+        }
+    }
+    setInterval(createConfetti, 1000);
+</script>
+
+</body>
+</html>

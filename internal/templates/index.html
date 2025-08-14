@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наши моменты 🎉</title>
+    <link rel="stylesheet" href="/static/css/tailwind.css">
+    <style>
+        .photo-frame {
+            background: linear-gradient(135deg, #ffe6f0 60%, #ff4f9d 100%);
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(255,79,157,0.10), 0 1.5px 8px rgba(173,85,247,0.08);
+            padding: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: box-shadow 0.2s;
+        }
+        .photo-frame:hover {
+            box-shadow: 0 8px 32px rgba(255,79,157,0.18), 0 3px 16px rgba(173,85,247,0.12);
+        }
+        .photo-img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(173,85,247,0.10);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 min-h-screen">
+    <header class="py-8 text-center">
+        <h1 class="text-4xl font-bold text-pink-600 mb-2 animate-bounce">С Днём Рождения, Лерочка! 🎂💖</h1>
+        <p class="text-lg text-gray-700 mb-4">
+            Ты делаешь этот мир ярче, а мою жизнь — счастливее.<br>
+            Пусть каждый день будет наполнен улыбками, радостью и любовью.<br>
+            Я тебя очень люблю! 💕
+        </p>
+        <button onclick="showLove()" class="px-8 py-3 bg-pink-500 hover:bg-pink-600 text-white text-lg font-semibold rounded-full shadow transition duration-200 mb-4">Я тебя люблю!</button>
+    </header>
+    <main class="container mx-auto px-2 pb-10">
+        <h2 class="text-2xl font-semibold text-center mb-6 text-purple-600">📸 Наши моменты</h2>
+        <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center">
+            {{if .Photos}}
+                {{range .Photos}}
+                    <div class="photo-frame">
+                        <img src="/static/img/we/{{.Image}}" alt="Фото" class="photo-img">
+                    </div>
+                {{end}}
+            {{else}}
+                <p class="text-gray-500 text-lg col-span-full">Пока нет фотографий.</p>
+            {{end}}
+        </div>
+    </main>
+    <footer class="text-center text-gray-500 mt-12 mb-4">
+        © 2025 Лерочка — С любовью 💖
+    </footer>
+    <script>
+        function showLove() {
+            alert("Ты самая лучшая! Я тебя очень люблю ❤️");
+        }
+    </script>
+</body>
+</html>
