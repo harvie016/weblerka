@@ -1,15 +1,19 @@
 package main
 
+package main
+
 import (
 	"encoding/json"
 	"html/template"
 	"io/fs"
 	"log"
 	"net/http"
+	"os"
 	"path/filepath"
 
 	"github.com/gorilla/mux"
 )
+
 
 type PhotoWithQuote struct {
 	Image string
@@ -125,6 +129,12 @@ func main() {
 	fs := http.FileServer(http.Dir("./static"))
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", fs))
 
-	log.Println("Сервер запущен на http://localhost:8080")
-	http.ListenAndServe(":8080", r)
+	// Railway передаст порт в переменной окружения PORT
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080" // локально по умолчанию
+	}
+
+	log.Printf("Сервер запущен на http://localhost:%s", port)
+	http.ListenAndServe(":"+port, r)
 }
