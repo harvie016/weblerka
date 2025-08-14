@@ -1,7 +1,5 @@
 package main
 
-package main
-
 import (
 	"encoding/json"
 	"html/template"
@@ -13,7 +11,6 @@ import (
 
 	"github.com/gorilla/mux"
 )
-
 
 type PhotoWithQuote struct {
 	Image string
